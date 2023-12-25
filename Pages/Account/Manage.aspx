@@ -1,6 +1,6 @@
-﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Manage.aspx.cs" Inherits="Account_Manage" %>
+﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Pages/Site.master" AutoEventWireup="true" CodeFile="Manage.aspx.cs" Inherits="Account_Manage" %>
 
-<%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
+<%@ Register Src="~/Pages/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
@@ -128,7 +128,7 @@
                     </ItemTemplate>
                 </asp:ListView>
 
-                <uc:openauthproviders runat="server" returnurl="~/Account/Manage" />
+                <uc:openauthproviders runat="server" returnurl="~/Pages/Account/Manage" />
             </section>
 
         </div>
