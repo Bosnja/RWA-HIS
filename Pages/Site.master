@@ -72,8 +72,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div id="sidebnar" class="col-md-3" style="width:fit-content;">
+        <div class="row container-fluid sidebar-row">
+            <div id="sidebar" class="col-md-3 bg-dark " style="width: fit-content;">
                 <div class="sidebar">
                     <ul class="nav flex-column">
                         <li class="nav-item"><a class="nav-link" href="#">Admin Dashboard</a></li>
@@ -84,18 +84,13 @@
                     </ul>
                 </div>
             </div>
-            <div class="body-content col-md-9 ml-sm-auto col-lg-9">
+            <div class="body-content col-md-9 ml-sm-auto ">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
                 <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-                <hr />
-                <footer>
-                    <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-                </footer>
+
             </div>
         </div>
-
-
     </form>
 </body>
 </html>
