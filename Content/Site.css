@@ -1,0 +1,33 @@
+﻿html, body, form {
+    height: 100%;
+    position: relative;
+}
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 20px;
+    padding-right: 15px;
+    padding-top: 20px;
+    height:100%
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.sidebar{
+    padding-top: 20px;
+
+}
+.sidebar-row{
+    height:100%
+}

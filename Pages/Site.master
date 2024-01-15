@@ -11,7 +11,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/stylesheets/" />
+    <webopt:BundleReference runat="server" Path="~/Content/" />
     <link href="~/Content/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -37,34 +37,33 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                    <a class="navbar-brand" runat="server" href="~/">Hospital Information System</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Pages/About">About</a></li>
-                        <li><a runat="server" href="~/Pages/Contact">Contact</a></li>
+
+                <div class="collapse navbar-collapse " id="navbarContent" data-bs-theme="dark">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/About">About</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Contact">Contact</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Pages/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Pages/Account/Login">Log in</a></li>
+                            <ul class="navbar-nav d-flex">
+                                <li><a class="nav-link" runat="server" href="~/Pages/Account/Register">Register</a></li>
+                                <li><a class="nav-link" runat="server" href="~/Pages/Account/Login">Log in</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Pages/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
+                            <ul class="navbar-nav d-flex">
+                                <li><a class="nav-link" runat="server" href="~/Pages/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
                                 <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    <asp:LoginStatus CssClass="nav-link" runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
                             </ul>
                         </LoggedInTemplate>
@@ -72,14 +71,25 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </footer>
+
+        <div class="row container-fluid sidebar-row">
+            <div id="sidebar" class="col-md-3 bg-dark " style="width: fit-content;">
+                <div class="sidebar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="#">Admin Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Manage Users</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">View Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">User Dashboard</a></li>
+                        <!-- Add more role-based options as needed -->
+                    </ul>
+                </div>
+            </div>
+            <div class="body-content col-md-9 ml-sm-auto ">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+
+            </div>
         </div>
     </form>
 </body>
