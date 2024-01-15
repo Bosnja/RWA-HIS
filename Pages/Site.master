@@ -71,19 +71,23 @@
                 </div>
             </div>
         </div>
+                            <asp:LoginView runat="server" ViewStateMode="Disabled">
 
+        <AnonymousTemplate>
         <div class="row container-fluid sidebar-row">
             <div id="sidebar" class="col-md-3 bg-dark " style="width: fit-content;">
                 <div class="sidebar">
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="#">Admin Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Zakaži termin</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Manage Users</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">View Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">User Dashboard</a></li>
-                        <!-- Add more role-based options as needed -->
                     </ul>
                 </div>
             </div>
+        </AnonymousTemplate>
+                                                    </asp:LoginView>
+
             <div class="body-content col-md-9 ml-sm-auto ">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
