@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Web.UI;
 using RWA_HIS;
+using System.Web.UI.WebControls;
 
 public partial class Account_Register : Page
 {
@@ -21,4 +22,5 @@ public partial class Account_Register : Page
             ErrorMessage.Text = result.Errors.FirstOrDefault();
         }
     }
+
 }
