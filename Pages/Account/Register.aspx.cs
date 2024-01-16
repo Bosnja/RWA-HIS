@@ -23,4 +23,19 @@ public partial class Account_Register : Page
         }
     }
 
+    protected void chkRoles_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string selectedRoles = string.Join(", ", chkRoles.Items.Cast<ListItem>().Where(li => li.Selected).Select(li => li.Value));
+        System.Diagnostics.Debug.WriteLine(selectedRoles);
+        // Toggle visibility of additional fields based on selected roles
+        patientFields.Visible = selectedRoles.Contains("Patient");
+        providerFields.Visible = selectedRoles.Contains("HealthcareProvider");
+    }
+
+    protected void calDOB_SelectionChanged(object sender, EventArgs e)
+    {
+        txtDOB.Text = calDOB.SelectedDate.ToShortDateString();
+        calDOB.Visible = false; // Hide the calendar after selection
+    }
 }
+

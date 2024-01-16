@@ -12,13 +12,13 @@ namespace RWA_HIS
     {
         public Patient patientProfile { get; set; }
         public HealthcareProvider healthcareProvider { get; set; }
-        private string FirstName { get; set; }
+        private string firstName { get; set; }
 
-        private string LastName { get; set; }
+        private string lastName { get; set; }
 
-        private string Role { get; set; }
+        private string role { get; set; }
 
-        private string ContactInformation { get; set; }
+        private string contactInformation { get; set; }
 
         
     }

@@ -12,7 +12,7 @@ namespace RWA_HIS.Models
             public string contactInformation { get; set; }
         }
 
-        public class Patient
+        public class Patient : Person
         {
             public int patientID { get; set; }
             public DateTime dateOfBirth { get; set; }
@@ -21,7 +21,7 @@ namespace RWA_HIS.Models
             public string insuranceInformation { get; set; }
         }
 
-        public class HealthcareProvider
+        public class HealthcareProvider : Person
         {
             public int providerID { get; set; }
             public string specialization { get; set; }
