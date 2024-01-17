@@ -10,18 +10,52 @@ namespace RWA_HIS
 {
     public class ApplicationUser : IdentityUser
     {
-        public Patient patientProfile { get; set; }
-        public HealthcareProvider healthcareProvider { get; set; }
-        private string firstName { get; set; }
+        private string firstName;
+        private string lastName;
+        private string role;
 
-        private string lastName { get; set; }
+        public Patient PatientProfile { get; set; }
+        public HealthcareProvider HealthcareProvider { get; set; }
+        public string FirstName
+        {
+            get
+            {
+                return firstName;
+            }
+            set
+            {
+                firstName = value;
+            }
+        }
 
-        private string role { get; set; }
+        public string LastName
+        {
+            get
+            {
+                return lastName;
+            }
+            set
+            {
+                lastName = value;
+            }
+        }
 
-        private string contactInformation { get; set; }
+        public string Role
+        {
+            get
+            {
+                return role;
+            }
+            set
+            {
+                role = value;
+            }
+        }
 
-        
     }
+
+
+    
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

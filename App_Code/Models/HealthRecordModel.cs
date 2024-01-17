@@ -19,7 +19,7 @@ namespace RWA_HIS.Models
 
         [Key]
         private int healthRecordId {  get; set; }
-
+        [Key]// this is a foreign key
         private int patientID { get; set; }
 
         private DateTime lastUpdate {  get; set; }

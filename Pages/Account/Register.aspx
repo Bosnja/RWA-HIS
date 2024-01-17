@@ -15,19 +15,19 @@
     <div class="row">
         <div class="col-sm-3 mb-3 mb-sm-0">
             <asp:Label runat="server" AssociatedControlID="UserName" CssClass="form-label">First name</asp:Label>
-            <asp:TextBox runat="server" ID="TextBox1" CssClass="form-control" />
+            <asp:TextBox runat="server" ID="FirstName" CssClass="form-control" />
             <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
                 CssClass="text-danger" ErrorMessage="The user name field is required." />
         </div>
         <div class="col-sm-3 mb-3 mb-sm-0">
             <asp:Label runat="server" AssociatedControlID="UserName" CssClass="form-label">Last name</asp:Label>
-            <asp:TextBox runat="server" ID="TextBox2" CssClass="form-control" />
+            <asp:TextBox runat="server" ID="LastName" CssClass="form-control" />
             <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
                 CssClass="text-danger" ErrorMessage="The user name field is required." />
         </div>
         <div class="col-sm-3 mb-3 mb-sm-0">
             <asp:Label runat="server" AssociatedControlID="UserName" CssClass="form-label">E-mail</asp:Label>
-            <asp:TextBox runat="server" ID="TextBox3" CssClass="form-control" />
+            <asp:TextBox runat="server" ID="Email" CssClass="form-control" />
             <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
                 CssClass="text-danger" ErrorMessage="The user name field is required." />
         </div>

@@ -1,31 +1,27 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 
 namespace RWA_HIS.Models
 {
-   
-        public class Person
+
+        public class Patient
         {
-            public string firstName { get; set; }
-            public string lastName { get; set; }
-            public string contactInformation { get; set; }
+            [Key]
+            public int PatientID { get; set; }
+            public DateTime DateOfBirth { get; set; }
+            public string Gender { get; set; }
+            public string EmergencyContactInformation { get; set; }
+            public string InsuranceInformation { get; set; }
         }
 
-        public class Patient : Person
+        public class HealthcareProvider
         {
-            public int patientID { get; set; }
-            public DateTime dateOfBirth { get; set; }
-            public string gender { get; set; }
-            public string emergencyContactInformation { get; set; }
-            public string insuranceInformation { get; set; }
-        }
-
-        public class HealthcareProvider : Person
-        {
-            public int providerID { get; set; }
-            public string specialization { get; set; }
-            public string licensingInformation { get; set; }
+            [Key]
+            public int ProviderID { get; set; }
+            public string Specialization { get; set; }
+            public string LicensingInformation { get; set; }
         }
     
 
