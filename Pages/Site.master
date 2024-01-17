@@ -49,8 +49,8 @@
                 <div class="collapse navbar-collapse " id="navbarContent" data-bs-theme="dark">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/About">About</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/PacijentHome">PacHOME</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="DoktorHome">DokHOME</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -76,10 +76,13 @@
             <div id="sidebar" class="col-md-3 bg-dark " style="width: fit-content;">
                 <div class="sidebar">
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="#">Admin Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Manage Users</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">View Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">User Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="ZakaziTermin.aspx">Zakaži termin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Preskripcija.aspx">View Prescription </a></li>
+                        <li class="nav-item"><a class="nav-link" href="MedicinskiRekordi.aspx">Medical record</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">---------------</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Pacijenti.aspx">Pacijenti</a></li>
+                        <li class="nav-item"><a class="nav-link" href="IzdajPreskripcije.aspx">Izdaj Preskripcije</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"></a></li>
                         <!-- Add more role-based options as needed -->
                     </ul>
                 </div>
@@ -87,7 +90,7 @@
             <div class="body-content col-md-9 ml-sm-auto ">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
-                <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                
 
             </div>
         </div>
