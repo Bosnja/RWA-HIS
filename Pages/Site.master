@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-                            <asp:LoginView runat="server" ViewStateMode="Disabled">
+        <asp:LoginView runat="server" ViewStateMode="Disabled">
 
         <AnonymousTemplate>
         <div class="row container-fluid sidebar-row">
@@ -86,7 +86,7 @@
                 </div>
             </div>
         </AnonymousTemplate>
-                                                    </asp:LoginView>
+        </asp:LoginView>
 
             <div class="body-content col-md-9 ml-sm-auto ">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">

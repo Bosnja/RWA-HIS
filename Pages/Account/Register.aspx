@@ -111,7 +111,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn" />
+            <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn bg-dark" />
         </div>
     </div>
 </asp:Content>
