@@ -72,11 +72,12 @@
             </div>
         </div>
         <div class="row container-fluid sidebar-row">
+             <% if (Context.User.Identity.IsAuthenticated)
+                              { %>
             <div id="sidebar" class="col-md-3 bg-dark " style="width: fit-content;">
                 <div class="sidebar">
                     <ul class="nav flex-column">
-                          <% if (Context.User.Identity.IsAuthenticated)
-                              { %>
+                         
 
                         <% if (Context.User.IsInRole("Patient"))
                             {
@@ -91,14 +92,14 @@
                            
                         <li class="nav-item"><a class="nav-link" href="Pacijenti.aspx">Pregledaj Pacijente</a></li>
                         <li class="nav-item"><a class="nav-link" href="IzdajPreskripcije.aspx">Izdaj recepte/uputnice</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Pregledaj karton</a></li>
-                         <%}
-                             }%>
+                        <li class="nav-item"><a class="nav-link" href="MedicinskiRekordi.aspx">Pregledaj karton</a></li>
+                         <%}%>
+                            
                         <!-- Add more role-based options as needed -->
                     </ul>
                 </div>
             </div>
-
+ <%}%>
             <div class="body-content col-md-9 ml-sm-auto ">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>

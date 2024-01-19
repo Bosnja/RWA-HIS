@@ -1,90 +1,53 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
-using System.Linq;
 
 namespace RWA_HIS.Models
 {
-
     public class MedicationLabContext : DbContext
     {
-        private DbSet<Medication> medications { get; set; }
-
-        private DbSet<LabResult> labResults { get; set; }
-
+        public DbSet<Medication> Medications { get; set; }
+        public DbSet<LabResult> LabResults { get; set; }
     }
 
-
-    class LabResult : GenericResult
+    public class LabResult : GenericResult
     {
-        public LabResult(int orderID, DateTime createdAt, DateTime updatedAt) : base(orderID, createdAt, updatedAt)
-        {
-        }
         [Key]
-        private int testID { get; set; }
-        private string testName { get; set; }
-        private string testResult { get; set; }
-
-        private string referenceRange { get; set; }
-
-        private string units { get; set; }
-
-        private string testMethodology { get; set; }
-
+        public int TestID { get; set; }
+        public string TestName { get; set; }
+        public string TestResult { get; set; }
+        public string ReferenceRange { get; set; }
+        public string Units { get; set; }
+        public string TestMethodology { get; set; }
     }
 
-    class Medication : GenericResult
+    public class Medication : GenericResult
     {
-        public Medication(int orderID, DateTime createdAt, DateTime updatedAt) : base(orderID, createdAt, updatedAt)
-        {
-        }
-
-        public Medication(int medicationID, string medicationName, string dosageInstructions, int providerID, DateTime startDate, DateTime endDate, string medicationForm, int patientID)
-        {
-            MedicationID = medicationID;
-            this.medicationName = medicationName;
-            this.dosageInstructions = dosageInstructions;
-            this.providerID = providerID;
-            this.startDate = startDate;
-            this.endDate = endDate;
-            this.medicationForm = medicationForm;
-            this.patientID = patientID;
-        }
-
         [Key]
-        private int MedicationID { get; set; }
-
-        private string medicationName { get; set; }
-
-        private string dosageInstructions { get; set; }
-
+        public int MedicationID { get; set; }
+        public string MedicationName { get; set; }
+        public string DosageInstructions { get; set; }
         [Key]
-        private int providerID { get; set; }
-
-        private DateTime startDate { get; set; }
-
-        private DateTime endDate { get; set; }
-
-        private string medicationForm {  get; set; }
+        public int ProviderID { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string MedicationForm { get; set; }
         [Key]
-        private int patientID { get; set; }
-
+        public int PatientID { get; set; }
     }
 
-    class GenericResult
+    public class GenericResult
     {
         [Key]
-        private int orderID { get; set; }
-
-        private DateTime createdAt { get; set; }
-
-        private DateTime updatedAt { get; set; }
+        public int OrderID { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public GenericResult(int orderID, DateTime createdAt, DateTime updatedAt)
         {
-            this.orderID = orderID;
-            this.createdAt = createdAt;
-            this.updatedAt = updatedAt;
+            OrderID = orderID;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
         }
 
         public GenericResult()

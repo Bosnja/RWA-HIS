@@ -1,59 +1,52 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-
 
 namespace RWA_HIS.Models
 {
-
     public class HealthRecordContext : DbContext
     {
-        private DbSet<HealthRecord> Records {  get; set; }
+        public DbSet<HealthRecord> Records { get; set; }
     }
 
     public class HealthRecord
     {
-
         [Key]
-        private int healthRecordId {  get; set; }
-        [Key]// this is a foreign key
-        private int patientID { get; set; }
+        public int HealthRecordId { get; set; }
 
-        private DateTime lastUpdate {  get; set; }
+        public int PatientID { get; set; }
 
-        private string diagnosis { get; set; }
+        public DateTime LastUpdate { get; set; }
 
-        private string treatments { get; set; }
+        public string Diagnosis { get; set; }
 
-        private string allergies { get; set; }
+        public string Treatments { get; set; }
 
-        private string immunizations { get; set; }
+        public string Allergies { get; set; }
 
-        private string medicationHistory {  get; set; }
+        public string Immunizations { get; set; }
 
-        private string medicalHistory { get; set; }
+        public string MedicationHistory { get; set; }
 
-        private string notes {  get; set; }
+        public string MedicalHistory { get; set; }
 
-
+        public string Notes { get; set; }
 
         public HealthRecord() { }
 
         public HealthRecord(int healthRecordId, int patientID, DateTime lastUpdate, string diagnosis, string treatments, string allergies, string immunizations, string medicationHistory, string medicalHistory, string notes)
         {
-            this.healthRecordId = healthRecordId;
-            this.patientID = patientID;
-            this.lastUpdate = lastUpdate;
-            this.diagnosis = diagnosis;
-            this.treatments = treatments;
-            this.allergies = allergies;
-            this.immunizations = immunizations;
-            this.medicationHistory = medicationHistory;
-            this.medicalHistory = medicalHistory;
-            this.notes = notes;
+            HealthRecordId = healthRecordId;
+            PatientID = patientID;
+            LastUpdate = lastUpdate;
+            Diagnosis = diagnosis;
+            Treatments = treatments;
+            Allergies = allergies;
+            Immunizations = immunizations;
+            MedicationHistory = medicationHistory;
+            MedicalHistory = medicalHistory;
+            Notes = notes;
         }
     }
 }
