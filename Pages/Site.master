@@ -48,9 +48,7 @@
 
                 <div class="collapse navbar-collapse " id="navbarContent" data-bs-theme="dark">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/PacijentHome">PacHOME</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="DoktorHome">DokHOME</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Početna</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -71,34 +69,42 @@
                 </div>
             </div>
         </div>
-                            <asp:LoginView runat="server" ViewStateMode="Disabled">
+        <div class="container-fluid">
+            <div class="row">
+                <% if (Context.User.Identity.IsAuthenticated)
+                    {
+                        %>
+                <div id="sidebar" class="col-auto sidebar bg-dark">
+                    <div class="sidebar">
+                        <ul class="nav flex-column">
+                            <%if (Context.User.IsInRole("Patient")) { %>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Patient/ScheduleAppointment.aspx">Zakaži pregled</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Patient/ViewPrescriptionsAndOrders.aspx">Pregledaj recepte</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Patient/ViewMedicalRecord.aspx">Pregledaj karton</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Patient/ViewAppointments.aspx">Pregledaj zakazane preglede</a></li>
+                            <%}
+                                else
+                                { %>
 
-        <AnonymousTemplate>
-        <div class="row container-fluid sidebar-row">
-            <div id="sidebar" class="col-md-3 bg-dark " style="width: fit-content;">
-                <div class="sidebar">
-                    <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="ZakaziTermin.aspx">Zakaži termin</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Preskripcija.aspx">View Prescription </a></li>
-                        <li class="nav-item"><a class="nav-link" href="MedicinskiRekordi.aspx">Medical record</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">---------------</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Pacijenti.aspx">Pacijenti</a></li>
-                        <li class="nav-item"><a class="nav-link" href="IzdajPreskripcije.aspx">Izdaj Preskripcije</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"></a></li>
-                        <!-- Add more role-based options as needed -->
-                    </ul>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Doctor/ViewLabOrders.aspx">Pregledaj Nalaze</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Doctor/CreateLabMedicationOrder.aspx">Kreiraj recepte/nalaze</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Doctor/ViewMedicalRecordWithUpdate.aspx">Pregledaj karton pacijenta</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Doctor/ViewPatients.aspx">Pregledaj sve pacijente</a></li>
+                            <%}%>
+
+                        </ul>
+                    </div>
+                </div>
+                <%}%>
+
+                <div class="col body-content">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+
                 </div>
             </div>
-        </AnonymousTemplate>
-                                                    </asp:LoginView>
-
-            <div class="body-content col-md-9 ml-sm-auto ">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                </asp:ContentPlaceHolder>
-                
-
-            </div>
         </div>
+
     </form>
 </body>
 </html>

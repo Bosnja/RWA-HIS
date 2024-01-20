@@ -4,18 +4,73 @@ using Microsoft.Owin.Security;
 using System.Web;
 using System;
 using RWA_HIS;
+using RWA_HIS.Models;
 
 namespace RWA_HIS
 {
-    // You can add User data for the user by adding more properties to your User class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        private string firstName;
+        private string lastName;
+        private string role;
+
+        public Patient PatientProfile { get; set; }
+        public HealthcareProvider HealthcareProvider { get; set; }
+        public string FirstName
+        {
+            get
+            {
+                return firstName;
+            }
+            set
+            {
+                firstName = value;
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return lastName;
+            }
+            set
+            {
+                lastName = value;
+            }
+        }
+
+        public string Role
+        {
+            get
+            {
+                return role;
+            }
+            set
+            {
+                role = value;
+            }
+        }
+
+        public string FirstNameLastName
+        {
+            get { return FirstName + " " + LastName; }
+        }
+
+        public int PatientID()
+        {
+            return PatientProfile.PatientID;
+        }
+
     }
+
+
+    
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("mainDB")
         {
         }
     }
