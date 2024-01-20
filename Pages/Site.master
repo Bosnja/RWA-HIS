@@ -73,12 +73,11 @@
             <div class="row">
                 <% if (Context.User.Identity.IsAuthenticated)
                     {
-                        if (Context.User.IsInRole("Patient"))
-                        {%>
+                        %>
                 <div id="sidebar" class="col-auto sidebar bg-dark">
                     <div class="sidebar">
                         <ul class="nav flex-column">
-
+                            <%if (Context.User.IsInRole("Patient")) { %>
                             <li class="nav-item"><a class="nav-link" href="/Pages/Patient/ScheduleAppointment.aspx">Zakaži pregled</a></li>
                             <li class="nav-item"><a class="nav-link" href="/Pages/Patient/ViewPrescriptionsAndOrders.aspx">Pregledaj recepte</a></li>
                             <li class="nav-item"><a class="nav-link" href="/Pages/Patient/ViewMedicalRecord.aspx">Pregledaj karton</a></li>
@@ -87,12 +86,12 @@
                                 else
                                 { %>
 
-                            <li class="nav-item"><a class="nav-link" href="Pacijenti.aspx">Pregledaj Pacijente</a></li>
-                            <li class="nav-item"><a class="nav-link" href="IzdajPreskripcije.aspx">Izdaj recepte/uputnice</a></li>
-                            <li class="nav-item"><a class="nav-link" href="MedicinskiRekordi.aspx">Pregledaj karton</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Doctor/ViewLabOrders.aspx">Pregledaj Nalaze</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Doctor/CreateLabMedicationOrder.aspx">Kreiraj recepte/nalaze</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Doctor/ViewMedicalRecordWithUpdate.aspx">Pregledaj karton pacijenta</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Pages/Doctor/ViewPatients.aspx">Pregledaj sve pacijente</a></li>
                             <%}%>
 
-                            <!-- Add more role-based options as needed -->
                         </ul>
                     </div>
                 </div>

@@ -14,6 +14,7 @@
         BundleConfig.RegisterBundles(BundleTable.Bundles);
         using (var context = new ApplicationDbContext())
         {
+            ClearDatabase();
             // Create roles if they don't exist
             CreateRoles(context);
 
@@ -148,7 +149,30 @@
 
             }
             };
+
+        List<LabResult> labResults = new List<LabResult>
+            {
+                new LabResult
+                {
+                    TestID = 1,
+                    TestName = "Blood Pressure",
+                    TestResult = "120/80",
+                    ReferenceRange = "Normal",
+                    Units = "mmHg",
+                    TestMethodology = "Manual"
+                },
+                new LabResult
+                {
+                    TestID = 2,
+                    TestName = "Cholesterol",
+                    TestResult = "180",
+                    ReferenceRange = "Below 200",
+                    Units = "mg/dL",
+                    TestMethodology = "Chemical Analysis"
+                },
+            };
         dbContext.Medications.AddRange(meds);
+        dbContext.LabResults.AddRange(labResults);
 
         dbContext.SaveChanges();
     }
@@ -204,7 +228,32 @@
         dbContext.SaveChanges();
     }
 
+    private void ClearDatabase()
+    {
 
+        using (var dbContext = new MedicationLabContext())
+        {
+            var medications = dbContext.Medications.ToList();
+            dbContext.Medications.RemoveRange(medications);
 
+            var labResults = dbContext.LabResults.ToList();
+            dbContext.LabResults.RemoveRange(labResults);
+
+            dbContext.SaveChanges();
+        }
+        using (var dbContext = new AppointmentsOrdersContext())
+        {
+            var appointments = dbContext.Appointments.ToList();
+            dbContext.Appointments.RemoveRange(appointments);
+            dbContext.SaveChanges();
+        }
+        using (var dbContext = new HealthRecordContext())
+        {
+            var records = dbContext.Records.ToList();
+            dbContext.Records.RemoveRange(records);
+            dbContext.SaveChanges();
+
+        }
+    }
 </script>
 

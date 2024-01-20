@@ -21,6 +21,12 @@ public partial class Pages_Doctor_ViewMedicalRecordWithUpdate : System.Web.UI.Pa
             BindPatientsDropDown();
             var selectedPatientID = GetSelectedPatientID();
             DisplayHealthRecord(selectedPatientID);
+            List<Medication> medications = medicationLabController.GetMedicationsForPatient(selectedPatientID).ToList();
+
+
+            // Bind the medications to the GridView
+            gvMedications.DataSource = medications;
+            gvMedications.DataBind();
         }
     }
 
@@ -32,14 +38,6 @@ public partial class Pages_Doctor_ViewMedicalRecordWithUpdate : System.Web.UI.Pa
 
             Debug.WriteLine(selectedPatientID);
             DisplayHealthRecord(selectedPatientID);
-
-        
-        List<Medication> medications = medicationLabController.GetMedicationsForPatient(selectedPatientID).ToList();
-
-        
-        // Bind the medications to the GridView
-        gvMedications.DataSource = medications;
-        gvMedications.DataBind();
 
 
     }
@@ -61,12 +59,21 @@ public partial class Pages_Doctor_ViewMedicalRecordWithUpdate : System.Web.UI.Pa
     protected void gvHealthRecord_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         int selectedPatientID = GetSelectedPatientID();
-        GridViewRow row = gvHealthRecord.Rows[e.RowIndex];
-        TextBox txtDiagnosis = (TextBox)row.FindControl("txtDiagnosis");
-        string updatedDiagnosis = txtDiagnosis.Text;
+        GridViewRow row = gvHealthRecord.Rows[e.RowIndex];        
+
+        HealthRecord updatedRecord = new HealthRecord
+        {
+            Diagnosis = ((TextBox)row.FindControl("txtDiagnosis")).Text,
+            Allergies = ((TextBox)row.FindControl("txtAllergies")).Text,
+            Immunizations = ((TextBox)row.FindControl("txtImmunizations")).Text,
+            MedicalHistory = ((TextBox)row.FindControl("txtMedicalHistory")).Text,
+            MedicationHistory = ((TextBox)row.FindControl("txtMedicationHistory")).Text,
+            Notes = ((TextBox)row.FindControl("txtNotes")).Text,
+            Treatments = ((TextBox)row.FindControl("txtTreatments")).Text,
+        };
 
         // Update the diagnosis in the database using patientID and updatedDiagnosis
-        UpdateHealthRecord(selectedPatientID, updatedDiagnosis);
+        UpdateHealthRecord(selectedPatientID, updatedRecord);
 
         gvHealthRecord.EditIndex = -1;
         DisplayHealthRecord(selectedPatientID);
@@ -105,7 +112,7 @@ public partial class Pages_Doctor_ViewMedicalRecordWithUpdate : System.Web.UI.Pa
         }
     }
 
-    private void UpdateHealthRecord(int patientID, string updatedDiagnosis)
+    private void UpdateHealthRecord(int patientID, HealthRecord updatedRecord)
     {
         healthRecordContext = new HealthRecordContext();
         var healthRecord = healthRecordContext.Records.FirstOrDefault(r => r.PatientID == patientID);
@@ -113,12 +120,19 @@ public partial class Pages_Doctor_ViewMedicalRecordWithUpdate : System.Web.UI.Pa
         if (healthRecord != null)
         {
             // Update the diagnosis
-            healthRecord.Diagnosis = updatedDiagnosis;
+            healthRecord.Diagnosis = updatedRecord.Diagnosis;
+            healthRecord.Allergies = updatedRecord.Treatments;
+            healthRecord.Immunizations = updatedRecord.Immunizations;
+            healthRecord.MedicalHistory = updatedRecord.MedicalHistory;
+            healthRecord.MedicationHistory = updatedRecord.MedicationHistory;
+            healthRecord.Notes = updatedRecord.Notes;
+            healthRecord.Treatments = updatedRecord.Treatments;
+            healthRecord.LastUpdate = DateTime.Now;
             healthRecordContext.SaveChanges();
         }
         else
         {
-            // Handle appropriately when health record is not found
+            
         }
     }
 

@@ -40,23 +40,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-default" />
+                        <div class="col-md-offset-3 col-md-10 mt-3">
+                            <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-dark" />
                         </div>
                     </div>
-                </div>
-                <p>
-                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register</asp:HyperLink>
-                    if you don't have a local account.
-                </p>
+               
             </section>
         </div>
 
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-                <uc:openauthproviders runat="server" id="OpenAuthLogin" />
-            </section>
-        </div>
+       
     </div>
 </asp:Content>
 
