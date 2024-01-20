@@ -16,8 +16,8 @@ body {
     padding-left: 20px;
     padding-right: 15px;
     padding-top: 20px;
-    height:100%;
-    width: 90%
+    height:94.8vh;
+    width: 80%
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */

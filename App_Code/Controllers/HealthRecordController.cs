@@ -26,9 +26,9 @@ namespace RWA_HIS {
         }
 
         // Get all health records for a specific patient
-        public IQueryable<HealthRecord> GetHealthRecordsForPatient(int patientID)
+        public HealthRecord GetHealthRecordForPatient(int patientID)
         {
-            return dbContext.Records.Where(hr => hr.PatientID == patientID);
+            return dbContext.Records.Where(hr => hr.PatientID == patientID).FirstOrDefault();
         }
 
         // Update health record

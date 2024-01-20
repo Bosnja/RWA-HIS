@@ -40,7 +40,7 @@ public class AppointmentsOrdersController
     // Get appointments within a specified date range
     public IQueryable<Appointment> GetAppointmentsInDateRange(DateTime startDate, DateTime endDate)
     {
-        return dbContext.Appointments.Where(a => a.DateTime >= startDate && a.DateTime <= endDate);
+        return dbContext.Appointments.Where(a => a.DateTimeAppointed >= startDate && a.DateTimeAppointed <= endDate);
     }
 
     // Get appointments with a specific status

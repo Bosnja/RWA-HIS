@@ -106,5 +106,11 @@ public class MedicationLabController
             dbContext.SaveChanges();
         }
     }
+
+    // Get all medications for a specific patient
+    public IQueryable<Medication> GetMedicationsForPatient(int patientID)
+        {
+        return dbContext.Medications.Where(m => m.PatientID == patientID);
+    }
 }
 }

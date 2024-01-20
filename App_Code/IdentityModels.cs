@@ -52,6 +52,16 @@ namespace RWA_HIS
             }
         }
 
+        public string FirstNameLastName
+        {
+            get { return FirstName + " " + LastName; }
+        }
+
+        public int PatientID()
+        {
+            return PatientProfile.PatientID;
+        }
+
     }
 
 
@@ -60,7 +70,7 @@ namespace RWA_HIS
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("mainDB")
         {
         }
     }

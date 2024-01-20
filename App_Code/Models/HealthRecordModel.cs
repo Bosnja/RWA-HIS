@@ -2,17 +2,24 @@
 using System.Data.Entity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RWA_HIS.Models
 {
     public class HealthRecordContext : DbContext
     {
+        public HealthRecordContext()
+           : base("mainDB")
+        {
+        }
+
         public DbSet<HealthRecord> Records { get; set; }
     }
 
     public class HealthRecord
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int HealthRecordId { get; set; }
 
         public int PatientID { get; set; }
@@ -37,7 +44,6 @@ namespace RWA_HIS.Models
 
         public HealthRecord(int healthRecordId, int patientID, DateTime lastUpdate, string diagnosis, string treatments, string allergies, string immunizations, string medicationHistory, string medicalHistory, string notes)
         {
-            HealthRecordId = healthRecordId;
             PatientID = patientID;
             LastUpdate = lastUpdate;
             Diagnosis = diagnosis;

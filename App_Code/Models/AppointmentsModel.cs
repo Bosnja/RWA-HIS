@@ -8,19 +8,24 @@ namespace RWA_HIS.Models
 {
     public class AppointmentsOrdersContext : DbContext
     {
+        public AppointmentsOrdersContext()
+           : base("mainDB")
+        {
+        }
         public DbSet<Appointment> Appointments { get; set; }
     }
 
     public class Appointment
     {
         [Key]
-        public string AppointmentID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int AppointmentID { get; set; }
 
         public int PatientID { get; set; }
 
         public int ProviderID { get; set; }
 
-        public DateTime DateTime { get; set; }
+        public DateTime DateTimeAppointed { get; set; }
 
         public string Status { get; set; }
 
